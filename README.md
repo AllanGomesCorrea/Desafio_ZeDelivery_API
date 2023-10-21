@@ -1,4 +1,4 @@
-# Desafio ZeDelivery API
+# Desafio ZéDelivery API
 
 # Sobre o projeto [PT-BR]
 
@@ -33,7 +33,6 @@ Salvar no banco de dados **todas** as seguintes informações representadas por 
 3. O campo `document` deve ser único entre os parceiros;
 4. O campo `id` deve ser único entre os parceiros, mas não necessariamente um número inteiro;
 
-Você pode usar esse arquivo [JSON](files/pdvs.json) com centenas de informações de parceiros que geramos para você testar o seu serviço — **não** esperamos que estes parceiros estejam pré carregados em sua base de dados.
 
 ### 2. Carregar parceiro pelo `id`:
 Retornar um parceiro específico baseado no seu campo `id` com todos os campos apresentados acima.
@@ -75,13 +74,38 @@ python manage.py migrate
 python manage.py runserver
 ```
 
+# Resultado
 
+Através do Django foi possível testar localmente e obter os resultados utlizando o endereço http://127.0.0.1:8000/partner/
+
+É possível utilizar o método POST para cadastrar através dos .JSON disponibilizados. Além disso o método GET fornece a lista completa de parceiros cadastrados.
+![mostrar cadastro](media/partner_get.png)
+
+Para retornar um parceiro específico pelo `id` basta introduzir após /partner/
+
+Exemplo:
+![procurar parceiro](media/partner_search.png)
+
+ou utilizando do botão `Filter` colocando a `id` do parceiro. Utilizando /partner/?search=`id` também resulta na busca.
+![procurar parceiro2](media/partner_search2.png)
+
+Utilizando o endereço http://127.0.0.1:8000/nearest_partner/ é possível buscar um parceiro mais próximo desde que o ponto dado pelo usuário seja um ponto dentro da área de cobertura.
+
+Se o ponto for fora de qualquer área de cobertura, nenhum resultado será encontrado. Para um ponto dentro da área, o parceiro mais próximo será buscado na base de dados cadastrada.
+
+Para utilizar a busca, basta inserir o valor de `lat` e `long` conforme o exemplo: http://127.0.0.1:8000/nearest_partner/?lat=14&long=24
+![usuario busca](media/lat_long.png)
+
+Exemplo de ponto fora da área de cobertura dos parceiros cadastrados.
+![usuario fora da área](media/lat_long2.png)
 
 # Autor
 
+[![Autor](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/allan-correa-582086186/)
+
 Allan Gomes Corrêa
 
-https://www.linkedin.com/in/allan-correa-582086186/
+
 
 
 
